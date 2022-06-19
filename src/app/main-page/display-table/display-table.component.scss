@@ -82,6 +82,7 @@ p{
 }
 ::ng-deep.mat-select-value {
   color: rgba(0, 0, 0, 0.55);
+  font-size: 18px;
 }
 ::ng-deep.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
   color: $color-main-lighter;
