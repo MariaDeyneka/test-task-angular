@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageComponent } from './main-page/main-page.component';
-import { FilterHeaderComponent } from './main-page/filter-header/filter-header.component';
+import { SearchHeaderComponent } from './main-page/search-header/search-header.component';
 import { DisplayTableComponent } from './main-page/display-table/display-table.component';
 import { MaterialModule } from './modules/material.module';
 import { FormsModule } from '@angular/forms';
@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     MainPageComponent,
-    FilterHeaderComponent,
+    SearchHeaderComponent,
     DisplayTableComponent
   ],
   imports: [
