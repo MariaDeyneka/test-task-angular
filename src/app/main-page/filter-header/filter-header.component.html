@@ -1,0 +1,9 @@
+<div class="container">
+  <mat-form-field class="search">
+    <mat-label class="search-label">Start by typing info f.e Sincere@april.biz</mat-label>
+    <input matInput type="text" class="search-input" [(ngModel)]="value" autocomplete="off">
+    <button class="close-icon" *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
