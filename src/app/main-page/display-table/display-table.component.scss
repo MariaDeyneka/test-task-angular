@@ -64,6 +64,7 @@ p{
   justify-content: center;
   border: 1px solid $color-main-dark;
   border-radius: 10px;
+  padding: 0px 15px;
 }
 .filter-inner{
   width: 100%;
@@ -86,6 +87,6 @@ p{
   color: $color-main-lighter;
 }
 ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-wrapper {
-  width: 90%;
+  width: 100%;
   padding: 0;
 }
