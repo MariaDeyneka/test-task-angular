@@ -1,34 +1,86 @@
 <mat-drawer-container class="container" hasBackdrop="true">
   <mat-drawer #drawer mode="over" position="end" class="info-sidenav">
     <div class="drawer-container">
-      <svg width="100px" height="100px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#143628" class="bi bi-person-square">
-        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+      <svg
+        width="100px"
+        height="100px"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="#143628"
+        class="bi bi-person-square"
+      >
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+        <path
+          d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"
+        />
       </svg>
       <div class="person-info">
         <h2>Personal info</h2>
-          <div class="inner-container">
-            <div class="info-section"><h3>ID</h3><p></p></div>
-            <div class="info-section"><h3>Name</h3><p></p></div>
-            <div class="info-section"><h3>Username</h3><p></p></div>
-            <div class="info-section"><h3>Email</h3><p></p></div>
-            <div class="info-section"><h3>Phone</h3><p></p></div>
-            <div class="info-section"><h3>Website</h3><p></p></div>
+        <div class="inner-container">
+          <div class="info-section">
+            <h3>ID</h3>
+            <p>{{ this.element }}</p>
           </div>
+          <div class="info-section">
+            <h3>Name</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.name }}</p>
+          </div>
+          <div class="info-section">
+            <h3>Username</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.username }}</p>
+          </div>
+          <div class="info-section">
+            <h3>Email</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.email }}</p>
+          </div>
+          <div class="info-section">
+            <h3>Phone</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.phone }}</p>
+          </div>
+          <div class="info-section">
+            <h3>Website</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.website }}</p>
+          </div>
+        </div>
         <h2>Address</h2>
-          <div class="inner-container">
-            <div class="info-section"><h3>Street</h3><p></p></div>
-            <div class="info-section"><h3>Suite</h3><p></p></div>
-            <div class="info-section"><h3>City</h3><p></p></div>
-            <div class="info-section"><h3>Zipcode</h3><p></p></div>
-            <div class="info-section"><h3>Coordinates</h3><p></p></div>
+        <div class="inner-container">
+          <div class="info-section">
+            <h3>Street</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.address?.street }}</p>
           </div>
+          <div class="info-section">
+            <h3>Suite</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.address?.suite }}</p>
+          </div>
+          <div class="info-section">
+            <h3>City</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.address?.city }}</p>
+          </div>
+          <div class="info-section">
+            <h3>Zipcode</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.address?.zipcode }}</p>
+          </div>
+          <div class="info-section">
+            <h3>Coordinates</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.address?.geo?.lat }}</p>
+            <p>{{ this.ELEMENT_DATA[this.element]?.address?.geo?.lng }}</p>
+          </div>
+        </div>
         <h2>Company</h2>
-          <div class="inner-container">
-            <div class="info-section"><h3>Name</h3><p></p></div>
-            <div class="info-section"><h3>Catchphrase</h3><p></p></div>
-            <div class="info-section"><h3>BS</h3><p></p></div>
+        <div class="inner-container">
+          <div class="info-section">
+            <h3>Name</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.company?.name }}</p>
           </div>
+          <div class="info-section">
+            <h3>Catchphrase</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.company?.catchPhrase }}</p>
+          </div>
+          <div class="info-section">
+            <h3>BS</h3>
+            <p>{{ this.ELEMENT_DATA[this.element]?.company?.bs }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </mat-drawer>
@@ -36,19 +88,27 @@
     <mat-form-field class="filter-select">
       <mat-label>Filter by:</mat-label>
       <mat-select [(ngModel)]="selectedValue" name="info" class="filter-inner">
-        <mat-option value="id">ID</mat-option>
-        <mat-option value="name">Name</mat-option>
-        <mat-option value="username">Username</mat-option>
-        <mat-option value="email">Email</mat-option>
-        <mat-option value="company">Company</mat-option>
-        <mat-option value="website">Website</mat-option>
-        <mat-option value="address">Address</mat-option>
+        <mat-option (click)="filter($event)" value="id">ID</mat-option>
+        <mat-option (click)="filter($event)" ы value="name">Name</mat-option>
+        <mat-option (click)="filter($event)" ы value="username"
+          >Username</mat-option
+        >
+        <mat-option (click)="filter($event)" ы value="email">Email</mat-option>
+        <mat-option (click)="filter($event)" ы value="company"
+          >Company</mat-option
+        >
+        <mat-option (click)="filter($event)" ы value="website"
+          >Website</mat-option
+        >
+        <mat-option (click)="filter($event)" ы value="address"
+          >Address</mat-option
+        >
       </mat-select>
     </mat-form-field>
-    <table mat-table [dataSource]="dataSource" class="people-table">
+    <table mat-table [dataSource]="ELEMENT_DATA" class="people-table">
       <ng-container matColumnDef="Id">
         <th mat-header-cell *matHeaderCellDef>Id</th>
-        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
       </ng-container>
 
       <ng-container matColumnDef="Name">
@@ -58,35 +118,51 @@
 
       <ng-container matColumnDef="Username">
         <th mat-header-cell *matHeaderCellDef>Username</th>
-        <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.username }}</td>
       </ng-container>
 
       <ng-container matColumnDef="Email">
-        <th mat-header-cell *matHeaderCellDef>Email</th>
-        <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+        <th mat-header-cell *matHeaderCellDef>email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
       </ng-container>
 
       <ng-container matColumnDef="Company">
         <th mat-header-cell *matHeaderCellDef>Company</th>
-        <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.company?.name }}</td>
       </ng-container>
 
       <ng-container matColumnDef="Website">
         <th mat-header-cell *matHeaderCellDef>Website</th>
-        <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.website }}</td>
       </ng-container>
 
       <ng-container matColumnDef="Address">
         <th mat-header-cell *matHeaderCellDef>Address</th>
-        <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.address?.street }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="see-more">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <button class="info-sidebox" (click)="drawer.toggle()">
-            <svg width="10" height="15" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20.6836 12.5175C21.7654 13.2098 21.7654 14.7902 20.6836 15.4825L3.0241 26.7846C1.54645 27.7303 -0.253851 26.1686 0.47369 24.5722L4.95921 14.7299C5.17053 14.2662 5.17053 13.7337 4.95921 13.2701L0.47369 3.42783C-0.253851 1.83144 1.54645 0.26973 3.0241 1.21542L20.6836 12.5175Z" fill="#192523" fill-opacity="0.76"/>
+          <button
+            class="info-sidebox"
+            (click)="data(element)"
+            (click)="drawer.toggle()"
+          >
+            <svg
+              width="10"
+              height="15"
+              viewBox="0 0 22 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20.6836 12.5175C21.7654 13.2098 21.7654 14.7902 20.6836 15.4825L3.0241 26.7846C1.54645 27.7303 -0.253851 26.1686 0.47369 24.5722L4.95921 14.7299C5.17053 14.2662 5.17053 13.7337 4.95921 13.2701L0.47369 3.42783C-0.253851 1.83144 1.54645 0.26973 3.0241 1.21542L20.6836 12.5175Z"
+                fill="#192523"
+                fill-opacity="0.76"
+              />
             </svg>
           </button>
         </td>
@@ -97,4 +173,3 @@
     </table>
   </mat-drawer-content>
 </mat-drawer-container>
-

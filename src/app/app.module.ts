@@ -8,23 +8,24 @@ import { SearchHeaderComponent } from './main-page/search-header/search-header.c
 import { DisplayTableComponent } from './main-page/display-table/display-table.component';
 import { MaterialModule } from './modules/material.module';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     SearchHeaderComponent,
-    DisplayTableComponent
+    DisplayTableComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

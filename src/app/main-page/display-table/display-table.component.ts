@@ -1,38 +1,77 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/http.service';
 
 export interface PeriodicElement {
+  id: number;
   name: string;
   position: number;
   weight: number;
   symbol: string;
-}
+  username: string;
+  email: string;
+  phone: string;
+  website: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
+  company: {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+  };
+}
 
 @Component({
   selector: 'app-display-table',
   templateUrl: './display-table.component.html',
-  styleUrls: ['./display-table.component.scss']
+  styleUrls: ['./display-table.component.scss'],
 })
 export class DisplayTableComponent implements OnInit {
-  displayedColumns: string[] = ['Id', 'Name', 'Username', 'Email', 'Company', 'Website', 'Address', 'see-more'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = [
+    'Id',
+    'Name',
+    'Username',
+    'Email',
+    'Company',
+    'Website',
+    'Address',
+    'see-more',
+  ];
+  public ELEMENT_DATA: any = [];
+  ngOnInit(): void {}
+
+  dataSource: PeriodicElement[] = this.ELEMENT_DATA;
   selectedValue = '';
+  element = 1;
+  public userData: any = this.ELEMENT_DATA;
+  constructor(private readonly httpService: HttpService) {
+    this.httpService.getUsers().subscribe((el) => {
+      console.log(el);
 
-  constructor() { }
-
-  ngOnInit(): void {
+      this.ELEMENT_DATA = el;
+    });
   }
 
+  public filter(el: any) {
+    console.log(el);
+
+    this.dataSource.sort((a: any, b: any) => {
+      console.log(a[el].localeCompare(b[el]));
+
+      return a[el].localeCompare(b[el]);
+    });
+    console.log('after');
+  }
+  public data(el: any) {
+    console.log(el);
+    this.element = el.id - 1;
+  }
 }
