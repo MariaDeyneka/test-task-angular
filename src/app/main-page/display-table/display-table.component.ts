@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/http.service';
 
-export interface PeriodicElement {
+export interface PeopleList{
   id: number;
   name: string;
   position: number;
@@ -48,7 +48,7 @@ export class DisplayTableComponent implements OnInit {
   public ELEMENT_DATA: any = [];
   ngOnInit(): void {}
 
-  dataSource: PeriodicElement[] = this.ELEMENT_DATA;
+  dataSource: PeopleList[] = this.ELEMENT_DATA;
   selectedValue = '';
   element = 1;
   public userData: any = this.ELEMENT_DATA;
